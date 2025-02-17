@@ -2,10 +2,10 @@
 CXX = g++
 
 # Compiler flags
-CXXFLAGS = -Iinclude
+CXXFLAGS = -Iinclude $(shell pkg-config --cflags opencv4) $(shell pkg-config --cflags gstreamer-1.0)
 
 # Linker flags
-LDFLAGS = -Llinux -Wl,-rpath,'$ORIGIN/libs'
+LDFLAGS = -Llinux -Wl,-rpath,'$ORIGIN/libs' $(shell pkg-config --libs opencv4) $(shell pkg-config --libs gstreamer-1.0)
 
 # Libraries to link
 LIBS = -lirparse -lirprocess -lirtemp -liruvc -lircmd -liri2c
